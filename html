@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube to Player</title>
+</head>
+<body>
+
+<h2>Enter YouTube Link:</h2>
+<input type="text" id="youtubeLink" placeholder="Paste YouTube link here" style="width: 300px;">
+<button onclick="convertToPlayer()">Play Video</button>
+
+<div id="player" style="margin-top: 20px;">
+    <!-- The video player will be embedded here -->
+</div>
+
+<script>
+    function convertToPlayer() {
+        const link = document.getElementById('youtubeLink').value;
+        const videoId = link.split('v=')[1] || link.split('/').pop();
+        const embedLink = `https://www.youtube.com/embed/${videoId}`;
+
+        document.getElementById('player').innerHTML = `
+            <iframe width="560" height="315" src="${embedLink}" 
+            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    }
+</script>
+
+</body>
+</html>
